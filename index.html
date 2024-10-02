@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/app.css?v=20241001">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>OGBench</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base target="_blank">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+<div class="container" id="main">
+    <div class="row">
+        <h1 class="col-md-12 text-center">
+            <b>OGBench: Benchmarking Offline Goal-Conditioned RL</b><br>
+            <small>
+                Anonymous Authors
+            </small>
+        </h1>
+    </div>
+
+    <div class="row">
+        <br>
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <p>
+                    <img src="img/env_teaser.png" style="width: 100%;">
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <hr>
+            <h1>Manipulation Tasks</h1>
+        </div>
+        <div class="col-md-12">
+            <h2>Cube</h2>
+            <br>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/cube-quadruple-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">cube-quadruple-play</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/cube-quadruple-v0_task4.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">cube-quadruple</span><br>
+                <span class="text-caption-task">Task: permute cubes</span>
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/cube-quadruple-v0_task5.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">cube-quadruple</span><br>
+                <span class="text-caption-task">Task: stack cubes</span>
+            </span>
+        </div>
+        <div class="col-md-12">
+            <h2>Scene</h2>
+            <br>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/scene-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">scene-play</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/scene-v0_task4.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">scene</span><br>
+                <span class="text-caption-task">Task: unlock drawer and put cube in it</span>
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/scene-v0_task5.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">scene</span><br>
+                <span class="text-caption-task">Task: unlock, open, and lock<br>drawer and window, then move cube</span>
+            </span>
+        </div>
+        <div class="col-md-12">
+            <h2>Puzzle</h2>
+            <br>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/puzzle-4x6-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">puzzle-4x6-play</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/puzzle-3x3-v0_task4.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">puzzle-3x3</span><br>
+                <span class="text-caption-task">Task: turn all buttons blue</span>
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/puzzle-4x5-v0_task2.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">puzzle-4x5</span><br>
+                <span class="text-caption-task">Task: turn all buttons blue</span>
+            </span>
+        </div>
+        <div class="col-md-12">
+            <h2>Visual Manipulation</h2>
+            <br>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/visual-cube-double-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">visual-cube-double-play</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/visual-scene-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">visual-scene-play</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/visual-puzzle-4x4-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">visual-puzzle-4x4-play</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+
+        <div class="col-md-12">
+            <hr>
+            <h1>Locomotion Tasks</h1>
+        </div>
+        <div class="col-md-12">
+            <h2>AntMaze</h2>
+            <br>
+        </div>
+        <div class="col-md-offset-2 col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/antmaze-teleport-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">antmaze-teleport-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/antmaze-giant-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">antmaze-giant-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-12">
+            <h2>AntMaze (Dataset Types)</h2>
+            <br>
+        </div>
+        <div class="col-md-4">
+            <p class="text-caption-large text-center text-tt">navigate</p>
+            <div class="col-md-12">
+                <p>
+                    <img src="img/dataset_navigate.png" style="width: 100%;">
+                </p>
+            </div>
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/antmaze-large-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">antmaze-large-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p class="text-caption-large text-center text-tt">stitch</p>
+            <div class="col-md-12">
+                <p>
+                    <img src="img/dataset_stitch.png" style="width: 100%;">
+                </p>
+            </div>
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/antmaze-large-stitch-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">antmaze-large-stitch</span><br>
+                Example dataset trajectories
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p class="text-caption-large text-center text-tt">explore</p>
+            <div class="col-md-12">
+                <p>
+                    <img src="img/dataset_explore.png" style="width: 100%;">
+                </p>
+            </div>
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/antmaze-large-explore-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">antmaze-large-explore</span><br>
+                Example dataset trajectories
+            </span>
+        </div>
+        <div class="col-md-12">
+            <h2>HumanoidMaze</h2>
+            <br>
+        </div>
+        <div class="col-md-offset-2 col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/humanoidmaze-medium-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">humanoid-medium-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/humanoidmaze-giant-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">humanoidmaze-giant-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-12">
+            <h2>AntSoccer</h2>
+            <br>
+        </div>
+        <div class="col-md-offset-2 col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/antsoccer-arena-stitch-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">antsoccer-arena-stitch</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/antsoccer-medium-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">antsoccer-medium-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-12">
+            <h2>Visual Locomotion</h2>
+            <br>
+        </div>
+        <div class="col-md-offset-2 col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/visual-antmaze-teleport-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt text-small">visual-antmaze-teleport-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/visual-humanoidmaze-medium-navigate-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt text-small">visual-humanoidmaze-medium-navigate</span><br>
+                Example dataset trajectory
+            </span>
+        </div>
+
+        <div class="col-md-12">
+            <hr>
+            <h1>Drawing Tasks</h1>
+        </div>
+        <div class="col-md-12">
+            <h2>Powderworld</h2>
+            <br>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/powderworld-hard-v0_data.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">powderworld-hard-play</span><br>
+                Example dataset trajectories
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/powderworld-hard-v0_task1.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">powderworld-hard</span><br>
+                <span class="text-caption-task">Task: <span class="text-tt">bubbles</span></span>
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/powderworld-hard-v0_task2.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">powderworld-hard</span><br>
+                <span class="text-caption-task">Task: <span class="text-tt">firework</span></span>
+            </span>
+        </div>
+        <div class="col-md-12"><br></div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/powderworld-hard-v0_task3.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">powderworld-hard</span><br>
+                <span class="text-caption-task">Task: <span class="text-tt">three-rooms</span></span>
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/powderworld-hard-v0_task4.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">powderworld-hard</span><br>
+                <span class="text-caption-task">Task: <span class="text-tt">four-squares</span></span>
+            </span>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <video class="center-block" width="100%" autoplay loop muted controls playsinline>
+                    <source src="img/powderworld-hard-v0_task5.mp4" type="video/mp4">
+                </video>
+            </p>
+            <span class="text-center text-caption top5 bottom5">
+                <span class="text-tt">powderworld-hard</span><br>
+                <span class="text-caption-task">Task: <span class="text-tt">ice-plant</span></span>
+            </span>
+        </div>
+
+        <div class="col-md-12">
+            <h1>Benchmarking Results</h1>
+            <br>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <p>
+                <img src="img/results.png" style="width: 100%;">
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr>
+            <p class="text-justify">
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a> and <a href="https://jonbarron.info/">Jon Barron</a>.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        if (navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)) {
+            const cells = document.getElementsByTagName('video');
+            for (const cell of cells) {
+                cell.removeAttribute("controls");
+            }
+        }
+    </script>
+</div>
+</body>
+</html>
